@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BrainCircuit, CreditCard, Lock, PieChart, Sparkles, TrendingUp, Wallet } from "lucide-react";
+import { ArrowRight, BrainCircuit, Lock, PieChart, Sparkles, TrendingUp, Download, Filter, MessageSquare } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -145,18 +145,18 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FeatureCard 
               icon={<BrainCircuit className="text-emerald-400" />}
-              title="AI Categorization"
-              description="Our advanced ML models automatically tag and categorize your transactions with 99% accuracy."
+              title="AI Financial Insights"
+              description="Receive smart alerts, saving tips, and personalized financial forecasts based on your spending patterns."
             />
             <FeatureCard 
-              icon={<TrendingUp className="text-blue-400" />}
-              title="Predictive Insights"
-              description="Get warned before you overspend. AI predicts your end-of-month balance based on your habits."
+              icon={<MessageSquare className="text-blue-400" />}
+              title="Ask AI Advisor"
+              description="Chat directly with an AI advisor to get quick summaries of your all-time spending and financial health."
             />
             <FeatureCard 
-              icon={<Wallet className="text-purple-400" />}
-              title="Multi-Wallet Sync"
-              description="Connect multiple bank accounts, credit cards, and cash wallets in one unified dashboard."
+              icon={<Download className="text-purple-400" />}
+              title="Dynamic PDF Export"
+              description="Export beautiful, color-coded PDF reports of your transactions for any custom date range."
             />
             <FeatureCard 
               icon={<PieChart className="text-pink-400" />}
@@ -164,14 +164,14 @@ export default function Home() {
               description="Set and track goals with stunning visual progress bars and category breakdown charts."
             />
             <FeatureCard 
-              icon={<CreditCard className="text-yellow-400" />}
-              title="Subscription Alerts"
-              description="Automatically detects recurring payments and warns you about price hikes or forgotten subs."
+              icon={<Filter className="text-yellow-400" />}
+              title="Advanced Filtering"
+              description="Easily filter your transactions by custom date ranges, categories, and income or expense types."
             />
             <FeatureCard 
               icon={<Lock className="text-cyan-400" />}
-              title="Bank-Grade Security"
-              description="Your data is encrypted end-to-end. We don't sell your data. You are the owner."
+              title="Secure & Private"
+              description="Your financial data is securely stored. You remain in full control of your personal information."
             />
           </div>
         </div>
