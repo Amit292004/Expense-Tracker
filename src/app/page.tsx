@@ -6,32 +6,45 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden bg-[#09090b]">
-      {/* Dynamic Background Gradients */}
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
+    <div className="flex flex-col min-h-screen overflow-hidden bg-[#09090b] relative">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle glowing grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+        
+        {/* Animated glowing orbs */}
+        <motion.div 
+          animate={{ y: [0, -30, 0], x: [0, 30, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-emerald-500/10 rounded-full mix-blend-screen filter blur-[120px]" 
+        />
+        <motion.div 
+          animate={{ y: [0, 40, 0], x: [0, -40, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-20 -right-20 w-[500px] h-[500px] bg-cyan-500/10 rounded-full mix-blend-screen filter blur-[120px]" 
+        />
+      </div>
 
       {/* Navbar */}
-      <header className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
+      <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/40 backdrop-blur-xl">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-emerald-500/20 p-2 rounded-xl">
-              <Sparkles className="w-5 h-5 text-emerald-400" />
+          <div className="flex items-center gap-2 group cursor-pointer">
+            <div className="bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 p-2 rounded-xl border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
+              <Sparkles className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform" />
             </div>
-            <span className="text-xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
+            <span className="text-xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
               ExpensIQ
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-            <Link href="#features" className="hover:text-white transition-colors">Features</Link>
-            <Link href="#ai" className="hover:text-white transition-colors">AI Capabilities</Link>
+            <Link href="#features" className="hover:text-emerald-400 transition-colors">Features</Link>
+            <Link href="#ai" className="hover:text-emerald-400 transition-colors">AI Capabilities</Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Link href="/login" className="text-sm font-medium hover:text-white transition-colors">
+            <Link href="/login" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
               Log in
             </Link>
-            <Link href="/register" className="text-sm font-medium bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">
+            <Link href="/register" className="text-sm font-semibold bg-white text-black px-5 py-2.5 rounded-full hover:bg-emerald-400 hover:text-black transition-all hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]">
               Get Started
             </Link>
           </div>
@@ -39,24 +52,24 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="flex-1 pt-32 pb-16 px-4">
+      <main className="flex-1 pt-36 pb-16 px-4 relative z-10">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-sm mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.1)]"
             >
               <Sparkles className="w-4 h-4" />
-              <span>Meet the future of personal finance</span>
+              <span className="font-medium tracking-wide">Next-Generation Personal Finance</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-heading font-bold tracking-tight mb-6 leading-tight"
+              className="text-5xl md:text-7xl font-heading font-extrabold tracking-tight mb-8 leading-[1.1]"
             >
               Master your money with{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500">
@@ -68,22 +81,23 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl"
+              className="text-lg md:text-xl text-zinc-400 mb-12 max-w-2xl leading-relaxed"
             >
-              ExpensIQ automatically categorizes your spending, predicts future expenses, and acts as your personal financial advisor. Beautifully designed. Incredibly smart.
+              Log your daily cash flow instantly, unlock AI-driven financial insights, and export dynamic PDF reports. <span className="text-zinc-200">Beautifully designed. Incredibly smart.</span>
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
             >
-              <Link href="/register" className="flex items-center justify-center gap-2 bg-emerald-500 text-black px-8 py-4 rounded-full font-medium text-lg hover:bg-emerald-400 transition-colors">
-                Start for free
-                <ArrowRight className="w-5 h-5" />
+              <Link href="/register" className="group relative flex items-center justify-center gap-2 bg-emerald-500 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-emerald-400 transition-all hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:-translate-y-1 overflow-hidden">
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                <span className="relative">Start for free</span>
+                <ArrowRight className="w-5 h-5 relative group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="#demo" className="flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white/10 transition-colors backdrop-blur-md">
+              <Link href="#demo" className="group flex items-center justify-center gap-2 bg-zinc-900/50 border border-white/10 text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white/10 transition-all hover:-translate-y-1 backdrop-blur-md">
                 View Demo
               </Link>
             </motion.div>
@@ -94,9 +108,14 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-20 relative mx-auto max-w-5xl"
+            className="mt-24 relative mx-auto max-w-5xl"
+            style={{ perspective: "1000px" }}
           >
-            <div className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl p-2 shadow-2xl">
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-2xl p-2 shadow-[0_20px_70px_rgba(0,0,0,0.8)] ring-1 ring-white/5 relative z-20"
+            >
               <div className="rounded-xl border border-white/5 bg-[#09090b]/80 overflow-hidden aspect-[16/9] relative">
                 {/* Mock UI Elements inside */}
                 <div className="absolute inset-0 flex">
@@ -129,7 +148,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </main>
